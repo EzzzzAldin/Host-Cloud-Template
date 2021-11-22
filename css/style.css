@@ -1,3 +1,6 @@
+/*- remove All main padding & margin of page
+  - use border-box to padding and border are included in the width and height  
+*/
 * {
   margin: 0;
   padding: 0;
@@ -12,10 +15,17 @@ body {
   color: #fff;
 }
 
+/* class container to set padding all elements of all deriction */
 .container {
   padding: 2% 10%;
 }
 
+/* - Split the page using By Grid system 
+   - create 12 columans
+   - create rows it is same number of section page
+   - use grid templete areas to distribute elements
+   - use 100vh to height becouse show section all screen
+*/
 #page {
   display: grid;
   height: 100vh;
@@ -29,10 +39,10 @@ body {
     "cloud cloud cloud cloud cloud cloud cloud cloud cloud cloud cloud cloud"
     "us us us us us us us us us us us us"
     "foot foot foot foot foot foot foot foot foot foot foot foot";
-  /* gap: 10px 10px; */
 }
 
 header {
+  /* the header take 9 columans of first row */
   grid-area: nav;
   display: flex;
   justify-content: space-between;
@@ -49,14 +59,16 @@ header ul {
 }
 
 header ul li {
+  /* Use inline-block to set li row */
   display: inline-block;
-  margin: 5px;
+  margin: 3px;
   font-size: 15px;
   cursor: pointer;
   font-weight: bold;
   transition: color 0.5s;
 }
 
+/* Hover => Is pseudo class When select element xreate action */
 header ul li:hover {
   color: #039be5;
   transition: color 0.5s;
@@ -77,6 +89,7 @@ nav {
 }
 
 header button {
+  /* the Button Of Auth take 3 columans of first row */
   grid-area: btn;
 }
 
@@ -84,6 +97,7 @@ button {
   cursor: pointer;
 }
 
+/* When Select any Button Of Auth Replace style */
 .login,
 .sign:hover {
   background-color: transparent;
@@ -109,7 +123,9 @@ button {
 }
 
 #page .search {
+  /* the Search Section take Second row Of Grid system */
   grid-area: search;
+  /* Use Flex to set Element To Columns */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +136,7 @@ button {
 #page .search h3 {
   font-size: 50px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   color: #fff;
 }
 
@@ -155,23 +171,27 @@ button {
 }
 
 #page .search .history {
+  /* Use Flex to set Element To row */
   display: flex;
 }
 
-#page .search .history h5 {
-  margin: 10px 35px;
-  position: relative;
+#page .search .history input {
+  margin: 10px 15px;
+  display: grid;
+  place-content: center;
 }
 
-#page .search .history h5::after {
+#page .search .history input::before {
   content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #fff;
-  left: -18px;
-  top: 3px;
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 140ms transform ease-in-out;
+  box-shadow: inset 1em 1em #039be5;
+}
+
+#page .search .history input:checked:before {
+  transform: scale(1);
 }
 
 #page .search .box-search button:hover,
@@ -179,6 +199,7 @@ button {
   background-color: #0875ac;
 }
 
+/* the Logo-text Section take Thrid row Of Grid system */
 #page .logo-text {
   background-color: #eee;
   grid-area: text;
@@ -198,6 +219,7 @@ button {
   margin-top: 30px;
 }
 
+/* the Search Section take Fourth row Of Grid system */
 #page .services {
   background-color: #fff;
   grid-area: services;
@@ -221,6 +243,7 @@ button {
 }
 
 #page .services .cards {
+  /* Use Flex To set All Cards In One row */
   display: flex;
 }
 
@@ -231,6 +254,7 @@ button {
   margin: 20px;
   border-radius: 5px;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #page .services .cards .card i {
@@ -247,7 +271,9 @@ button {
   margin: 10px;
 }
 
+/* the Search Section take Five row Of Grid system */
 #page .cloud {
+  /* Use Linear gradient To split Back gound Two parts */
   background-image: linear-gradient(transparent 30%, #fff 30%);
   grid-area: cloud;
   height: 100%;
@@ -260,7 +286,7 @@ button {
   color: #fff;
   font-size: 30px;
   font-weight: bold;
-  margin: 10px;
+  margin: 1px;
 }
 
 #page .cloud p {
@@ -277,7 +303,9 @@ button {
   box-shadow: 1px 1px 3px 1px #aaa;
   margin: 50px;
   padding: 30px;
+  /* Use Position Relative To create buutton in center card from bottom */
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 #page .cloud .cards .card h4 {
@@ -315,6 +343,7 @@ button {
   font-size: 12px;
 }
 
+/* Create arrow shape By use border & pusedo element After */
 #page .cloud .cards .card ul li::after {
   content: "";
   width: 0;
@@ -385,6 +414,7 @@ button {
   font-size: 15px;
 }
 
+/* the Search Section take Six row Of Grid system */
 #page .us {
   background-color: #eee;
   grid-area: us;
@@ -395,6 +425,7 @@ button {
 #page .us i {
   font-size: 80px;
   background-image: linear-gradient(to right, #654ea3, #eaafc8);
+  /* Use border-radius 50% to create background ciruit shape */
   border-radius: 50%;
   margin: 30px;
 }
@@ -424,6 +455,7 @@ button {
   opacity: 0.4;
 }
 
+/* the Search Section take Seven row Of Grid system */
 footer {
   grid-area: foot;
   height: 100%;
@@ -457,7 +489,7 @@ footer .info ul {
 }
 
 footer .info ul li {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 footer hr {
